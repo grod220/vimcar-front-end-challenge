@@ -1,0 +1,16 @@
+<div class="cart-container">
+  <img src="../../assets/cart.svg"
+       class="cart-icon"
+       [ngClass]="{'cart-no-show': !shoppingCart.length}"
+       (click)="showCart=!showCart">
+  <div *ngIf="shoppingCartCount" class="countNumber">{{ shoppingCartCount }}</div>
+
+  <div class="cart-box" [class.show-cart]="showCart && shoppingCart.length">
+    <div *ngFor="let cartProduct of shoppingCart; let i = index;" class="cart-item">
+      <img [src]="cartProduct.imagePath" class="cartImage">
+      {{cartProduct.name}}
+      <br>
+      <a (click)="removeIt(i)" class="remove-text">Remove</a>
+    </div>
+  </div>
+</div>
